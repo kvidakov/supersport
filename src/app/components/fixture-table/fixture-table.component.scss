@@ -1,0 +1,61 @@
+.fixture-table {
+  &__header {
+    background: #d2d8db;
+    display: flex;
+    flex: 1;
+    padding: 2px 4px;
+    width: 100%;
+  }
+
+  &__row {
+    align-items: center;
+    border-bottom: 1px solid #dbe2e6;
+    padding: 2px 0;
+  }
+
+  &__col {
+    // border-right: 1px solid #dbe2e6;
+    // border-left: 1px solid #dbe2e6;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2px 4px;
+    width: 40px;
+  }
+  
+  &__header-date {
+    margin-right: auto;
+  }
+
+  &__header-market-value {
+    text-align: center;
+    width: 46px;
+  }
+  
+  &__match-col {
+    display: flex;
+    flex: 1 1 50%;
+    margin-right: auto;
+  }
+  
+  &__pick-col {
+    display: flex;
+    flex: 0 1 30%;
+    margin-right: auto;
+  }
+
+  &__time {
+    font-size: 11px;
+    margin-left: auto;
+  }
+
+  &__pick {
+    background: #fff;
+
+    &--selected {
+      background: #b51f21;
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<div class="fixture-table">
+  <div class="row">
+    <div class="col fixture-table__match-col">
+      <div class="row">
+        <div class="fixture-table__header">
+          <span class="fixture-table__header-date">
+            {{ getEventDate(eventDateGroup.date) }}
+          </span>
+        </div>
+      </div>
+      <div
+        class="row fixture-table__row"
+        *ngFor="let event of eventDateGroup.events"
+      >
+        {{ event?.fixture?.participants[0]?.name }} -
+        {{ event?.fixture?.participants[1]?.name }}
+        <span class="fixture-table__time">
+          {{ getEventTime(event?.fixture?.startDate) }}
+        </span>
+      </div>
+    </div>
+    <div class="col fixture-table__pick-col">
+      <div class="row">
+        <div class="fixture-table__header">
+          <ng-container *ngFor="let marketValueKey of objectKeys(marketValues)">
+            <span class="fixture-table__header-market-value">
+              {{ marketValues[marketValueKey] }}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+      <ng-container *ngFor="let event of eventDateGroup.events">
+        <div class="row fixture-table__row">
+          <div
+            class="col fixture-table__col"
+            *ngFor="let pick of getAllPicksForEvent(event?.markets)"
+            (click)="onPickClicked(event, pick)"
+            [class.fixture-table__pick--selected]="
+              checkIfPickIsSelected(pick, event)
+            "
+          >
+            {{ pick?.odds }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
