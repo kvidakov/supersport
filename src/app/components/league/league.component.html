@@ -1,0 +1,9 @@
+<section class="league">
+  <h3 class="league__title">{{ league?.name }}</h3>
+  <app-fixture-table
+    *ngFor="let eventDateGroup of eventDateGroups"
+    [eventDateGroup]="eventDateGroup"
+    [ticket]="ticket"
+    (pickClicked)="onPickClicked($event)"
+  ></app-fixture-table>
+</section>
