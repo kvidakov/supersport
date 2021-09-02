@@ -1,0 +1,44 @@
+<section class="ticket">
+  <h3 class="ticket__title">Tiket</h3>
+  <div class="row" *ngFor="let ticketItem of ticket.matches">
+    <span class="col ticket__participants-col">
+      <div class="ticket__pick-participant">
+        {{ ticketItem.event?.fixture?.participants[0]?.name }}
+      </div>
+      <div class="ticket__pick-participant">
+        {{ ticketItem.event?.fixture?.participants[1]?.name }}
+      </div>
+    </span>
+    <span class="col ticket__pick-col">
+      <div class="ticket__pick-name">
+        {{ ticketItem.pick?.name }}
+      </div>
+      <div class="ticket__pick-odd">
+        {{ ticketItem.pick?.odds }}
+      </div>
+    </span>
+    <span class="col">
+      <div class="ticket__pick-remove" (click)="removePick(ticketItem)">x</div>
+    </span>
+  </div>
+  <div class="row">
+    <span class="col">Ukupna kvota: </span
+    ><span class="col">{{ totalQuota }}</span>
+  </div>
+  <div class="row">
+    <span class="col">
+      Ulog: <br /><br />
+      <input
+        type="number"
+        [(ngModel)]="betPlaced"
+        (ngModelChange)="getTotalWin()"
+      />
+    </span>
+  </div>
+  <div class="row">
+    <span class="col">
+      Dobitak: <br /><br />
+      {{ totalWin }} kn
+    </span>
+  </div>
+</section>
